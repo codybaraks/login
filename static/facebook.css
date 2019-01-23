@@ -1,0 +1,37 @@
+.login
+{
+    margin-left: 34%;
+    padding-right: 30%;
+}
+body
+{
+    background-color: blue;
+}
+.form-row
+{
+    left: 50%;
+    float: right;
+}
+h1
+{
+    font-weight: bold;
+}
+.content
+{
+    top: 100px;
+    right: 190%;
+    z-index: 1;
+    position: absolute;
+}
+.form-group2
+{
+     margin-bottom: 1px !important;
+}
+.form-group
+{
+     margin-bottom: 1px !important;
+}
+.block
+{
+    background: blue;
+}
