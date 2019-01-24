@@ -16,6 +16,14 @@ h1
 {
     font-weight: bold;
 }
+.reset
+{
+    font-weight: bold;
+    text-decoration: underline;
+    left: 64%;
+    text-font: 12px;
+    color: blue;
+}
 .content
 {
     top: 100px;

@@ -23,7 +23,7 @@
 
             <div class="row justify-content-left">
                 <div class="col-8">
-                    <form>
+                    <form method="post" action="/register">
 
                         <div class="form-row col-md-7">
                             <h4 class="content col-md-12">Facebook helps you connect and share with the people in your life.</h4>
@@ -31,30 +31,33 @@
                             <h5>its Free and always will be</h5>
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1"></label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                <input type="name" name="name" class="form-control" id="exampleInputEmail1"
                                        aria-describedby="emailHelp"
                                        placeholder="First Name">
 
                             </div>
                             <div class="form-group2 col-md-6">
                                 <label for="exampleInputPassword1"></label>
-                                <input type="password" class="form-control" id="exampleInputPassword1"
-                                       placeholder="Password">
+                                <input type="name" name="surname" class="form-control" id="exampleInputPassword1"
+                                       placeholder="surname">
                             </div>
                             <div class="form-group2 col-md-12">
                                 <label for="exampleInputPassword1"></label>
-                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                <input type="email" name="email" class="form-control" id="exampleInputPassword2"
                                        placeholder="Mobile Number or Email address">
                             </div>
                             <div class="form-group3 col-md-12">
                                 <label for="exampleInputPassword1"></label>
-                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword3"
                                        placeholder="New Password">
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-sm btn-block float-right"
                                     style="margin-right: 0rem">Log In
                             </button>
+                            <div class="reset col-md-5" style="margin-right: 0rem">
+                                Forgot Password
+                            </div>
                         </div>
                     </form>
                 </div>
