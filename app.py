@@ -1,14 +1,15 @@
-from flask import Flask, redirect, request, render_template
+from flask import Flask, redirect, request, render_template, session, url_for, flash
 import mysql.connector as connector
 
 db = connector.connect(host="localhost", user="root", passwd="root", database="personal")
 
 app = Flask(__name__)
+app.secret_key = 'jxbxjxdjdjdjddj'
 
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return redirect(url_for('register'))
 
 
 @app.route('/reset_form')
@@ -39,16 +40,19 @@ def reset():
         email = request.form['email']
 
         print(email)
-        sql = "SELECT * FROM personal WHERE email=%s AND password=%s"
-        vals = (email,)
-        cursor.execute(sql, vals)
+        cursor = db.cursor(buffered=True)
+        sql = "SELECT * FROM register WHERE email=%s"
+        val = (email,)
+        cursor.execute(sql, val)
         register = cursor.fetchone()
         if register:
-            session['email'] = register[1]
-            return redirect(url_for('homes'))
+            session['email'] = register[2]
+            flash('message correct pass')
+            print("checking for real")
+            return redirect(url_for('register'))
         else:
-            flash('message', 'wrong username or password!')
-    return render_template('login.html')
+            flash('wrong username or password!')
+    return render_template('home.html')
 
 
 if __name__ == '__main__':

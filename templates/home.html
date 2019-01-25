@@ -14,6 +14,15 @@
 
 </div>
 <div class="container">
+    {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                    {% for message in messages %}
+                        <p class="text-info text-center">{{ message }}</p>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
     <div class="row justify-content-left">
         <div class="col-5">
 
@@ -55,7 +64,7 @@
                             <button type="submit" class="btn btn-primary btn-sm btn-block float-right"
                                     style="margin-right: 0rem">Log In
                             </button>
-                            <div class="reset col-md-5" style="margin-right: 10rem"><a href="reset.html">Forgot Password</a>
+                            <div class="reset col-md-5" style="margin-right: 10rem"><a href="/reset_form">Forgot Password</a>
 
                             </div>
                         </div>

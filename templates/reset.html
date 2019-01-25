@@ -9,6 +9,15 @@
 </head>
 <body>
 <div class="container">
+    {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                    {% for message in messages %}
+                        <p class="text-info text-center">{{ message }}</p>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
     <div class="row justify-content-center">
         <div class="col-12">
 
@@ -21,10 +30,10 @@
             <div class="card-body">
 
 
-                <form method="get" action="/reset">
+                <form method="post" action="/reset">
                     <div class="form-group" style="margin-top: 2rem">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                                placeholder="Enter email">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                             else.
