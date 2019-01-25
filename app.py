@@ -1,6 +1,6 @@
 from flask import Flask, redirect, request, render_template, session, url_for, flash
 import mysql.connector as connector
-
+import random, string
 db = connector.connect(host="localhost", user="root", passwd="root", database="personal")
 
 app = Flask(__name__)
@@ -48,7 +48,9 @@ def reset():
         if register:
             session['email'] = register[2]
             flash('message correct pass')
-            print("checking for real")
+            def randomString(stringLength=10):
+             print("First Random String is  ", randomString())
+            # print("checking for real")
             return redirect(url_for('register'))
         else:
             flash('wrong username or password!')
