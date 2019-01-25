@@ -20,8 +20,8 @@ h1
 {
     font-weight: bold;
     text-decoration: underline;
-    left: 64%;
-    text-font: 12px;
+    left: 62%;
+   font-size: 14px;
     color: blue;
 }
 .content

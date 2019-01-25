@@ -11,6 +11,11 @@ def hello_world():
     return 'Hello World!'
 
 
+@app.route('/reset_form')
+def reset_form():
+    return render_template('reset.html')
+
+
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
@@ -26,6 +31,24 @@ def register():
         cursor.execute(sql, val)
         db.commit()
     return render_template('home.html')
+
+
+@app.route('/reset', methods=['POST', 'GET'])
+def reset():
+    if request.method == 'POST':
+        email = request.form['email']
+
+        print(email)
+        sql = "SELECT * FROM personal WHERE email=%s AND password=%s"
+        vals = (email,)
+        cursor.execute(sql, vals)
+        register = cursor.fetchone()
+        if register:
+            session['email'] = register[1]
+            return redirect(url_for('homes'))
+        else:
+            flash('message', 'wrong username or password!')
+    return render_template('login.html')
 
 
 if __name__ == '__main__':
