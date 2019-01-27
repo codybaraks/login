@@ -4,7 +4,6 @@ import uuid
 # import random, string
 from validation import *
 
-
 db = connector.connect(host="localhost", user="root", passwd="root", database="personal")
 
 app = Flask(__name__)
@@ -18,12 +17,12 @@ def hello_world():
 
 @app.route('/form_reset')
 def form_reset():
-    return render_template('reset.html')
+    return redirect(url_for('resets'))
 
-#
-# @app.route('/token')
-# def token():
-#     return render_template('token.html')
+
+@app.route('/resets', methods=['POST', 'GET'])
+def resets():
+    return render_template('reset.html')
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -47,7 +46,7 @@ def register():
 
 @app.route('/reset', methods=['POST', 'GET'])
 def reset():
-    form = ResetForm()
+    form = RegisterForm()
     form.validate_on_submit()
     if request.method == 'POST':
         email = request.form['email']
