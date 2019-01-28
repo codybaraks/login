@@ -24,6 +24,11 @@ def hello_world():
     return redirect(url_for('register'))
 
 
+@app.route('/pass_form')
+def pass_form():
+    return redirect(url_for('password_confirm'))
+
+
 @app.route('/form_reset', methods=['POST', 'GET'])
 def form_reset():
     form = ResetForm()
@@ -51,6 +56,28 @@ def register():
         cursor.execute(sql, val)
         db.commit()
     return render_template('home.html', form=form)
+
+
+@app.route('/password_confirm', methods=['GET', 'POST'])
+def password_confirm():
+    # if request.form["password"] != request.form["conf_pass"]:
+    #     flash("Your password and password verification didn't match."
+    #           , "danger")
+    form = RegisterForm()
+    form.validate_on_submit()
+    if request.method == 'POST':
+
+        password = request.form['password']
+        conf_pass = request.form['conf_pass']
+
+        print(password, conf_pass)
+        cursor = db.cursor()
+        sql = "UPDATE `register` SET `password`= password=%s WHERE email='earvinbaraka'"
+        val = (password,)
+        cursor.execute(sql, val)
+        db.commit()
+        flash('password updated')
+    return render_template('password_Reset.html', form=form)
 
 
 @app.route('/reset', methods=['POST', 'GET'])
@@ -95,7 +122,7 @@ def conf_email(token):
     except SignatureExpired:
         return '<h1>The token is expired!</h1>'
     # return '<h1>The token works!</h1>'
-    return redirect(url_for('register'))
+    return redirect(url_for('pass_form'))
 
 
 if __name__ == '__main__':
