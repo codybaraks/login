@@ -72,7 +72,7 @@ def password_confirm():
 
         print(password, conf_pass)
         cursor = db.cursor()
-        sql = "UPDATE `register` SET `password`= password=%s WHERE email='earvinbaraka'"
+        sql = "UPDATE `register` SET `password`=password=%s WHERE email='earvinbaraka@gmail.com'"
         val = (password,)
         cursor.execute(sql, val)
         db.commit()
