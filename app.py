@@ -15,14 +15,14 @@ def hello_world():
     return redirect(url_for('register'))
 
 
-@app.route('/form_reset')
+@app.route('/form_reset', methods=['POST', 'GET'])
 def form_reset():
-    return redirect(url_for('resets'))
-
-
-@app.route('/resets', methods=['POST', 'GET'])
-def resets():
-    return render_template('reset.html')
+    form = ResetForm()
+    form.validate_on_submit()
+    if request.method == 'POST':
+        email = request.form["email"]
+        print(email)
+    return render_template('reset.html', form=form)
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -60,8 +60,8 @@ def reset():
             session['email'] = register[2]
             print(uuid.uuid4().hex.upper())
             token = uuid.uuid4().hex.upper()
-            sql2 = "INSERT INTO `token`(`token`) VALUES (%s)"
-            val2 = (token,)
+            sql2 = "INSERT INTO `token`(`token`, `email`) VALUES (%s,%s)"
+            val2 = (token,email)
             cursor.execute(sql2, val2)
             db.commit()
             flash('message correct pass')

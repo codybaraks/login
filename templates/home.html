@@ -15,13 +15,13 @@
 </div>
 <div class="container">
     {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul class=flashes>
-        {% for message in messages %}
-        <p class="text-info text-center">{{ message }}</p>
-        {% endfor %}
-    </ul>
-    {% endif %}
+        {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                    <p class="text-info text-center">{{ message }}</p>
+                {% endfor %}
+            </ul>
+        {% endif %}
     {% endwith %}
     <div class="row justify-content-left">
         <div class="col-5">
@@ -45,7 +45,7 @@
                                        aria-describedby="emailHelp"
                                        placeholder="First Name">
                                 {% for error in form.email.errors %}
-                                <span style="color: red;">[{{ error }}]</span>
+                                    <span style="color: red;">[{{ error }}]</span>
                                 {% endfor %}
 
                             </div>
@@ -54,7 +54,7 @@
                                 <input type="name" name="surname" class="form-control" id="exampleInputPassword1"
                                        placeholder="surname">
                                 {% for error in form.surname.errors %}
-                                <span style="color: red;">[{{ error }}]</span>
+                                    <span style="color: red;">[{{ error }}]</span>
                                 {% endfor %}
                             </div>
                             <div class="form-group2 col-md-12">
@@ -62,25 +62,22 @@
                                 <input type="email" name="email" class="form-control" id="exampleInputPassword2"
                                        placeholder="Mobile Number or Email address">
                                 {% for error in form.email.errors %}
-                                <span style="color: red;">[{{ error }}]</span>
+                                    <span style="color: red;">[{{ error }}]</span>
                                 {% endfor %}
                             </div>
                             <div class="form-group3 col-md-12">
                                 <label for="exampleInputPassword1"></label>
                                 <input type="password" name="password" class="form-control" id="exampleInputPassword3"
                                        placeholder="New Password">
-{#                                {% for error in form.password.errors %}#}
-{#                                <span style="color: red;">[{{ error }}]</span>#}
-{#                                {% endfor %}#}
+                                                                {% for error in form.password.errors %}
+                                                                <span style="color: red;">[{{ error }}]</span>
+                                                                {% endfor %}
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-sm btn-block float-right"
                                     style="margin-right: 0rem">Register
                             </button>
-                            <div class="reset col-md-5" style="margin-right: 10rem"><a href="/form_reset">Forgot
-                                Password</a>
 
-                            </div>
                         </div>
                     </form>
                 </div>
@@ -88,6 +85,9 @@
         </div>
     </div>
 </div>
+<a href="form_reset" class="reset col-md-5"  style="margin-right: 10rem">Forgot
+    Password</a>
+
 
 </body>
 </html>
