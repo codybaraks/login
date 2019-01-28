@@ -72,7 +72,7 @@ def password_confirm():
 
         print(password, conf_pass)
         cursor = db.cursor()
-        sql = "UPDATE `register` SET `password`=password=%s WHERE email='earvinbaraka@gmail.com'"
+        sql = "UPDATE `register` SET `password`=%s WHERE email='earvinbaraka@gmail.com'"
         val = (password,)
         cursor.execute(sql, val)
         db.commit()
@@ -107,7 +107,7 @@ def reset():
             msg.body = render_template('sentmail.html', token=token, link=link)
             mail.send(msg)
 
-            flash('message correct pass')
+            flash('Link sent to your Email')
             # print("checking for real")
             return redirect(url_for('register', token=token))
         else:

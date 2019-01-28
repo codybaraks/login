@@ -20,7 +20,15 @@ h1
 {
     font-weight: bold;
     text-decoration: underline;
-    left: 72%;
+    left: 76%;
+   font-size: 14px;
+    color: blue;
+}
+.reset_password
+{
+    font-weight: bold;
+    text-decoration: underline;
+    left: 48%;
    font-size: 14px;
     color: blue;
 }
