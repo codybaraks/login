@@ -5,6 +5,8 @@ from flask_mail import Message, Mail
 from itsdangerous import URLSafeSerializer, SignatureExpired
 # import random, string
 from validation import *
+from passlib.hash import sha256_crypt
+import hashlib
 
 db = connector.connect(host="localhost", user="root", passwd="root", database="personal")
 
@@ -47,8 +49,9 @@ def register():
         name = request.form['name']
         surname = request.form['surname']
         email = request.form['email']
-        password = request.form['password']
-
+        password = sha256_crypt.encrypt(request.form['password'])
+        # password.hexdigest
+        # password = hashlib.md5(password.encode())
         print(name, surname, email, password)
         cursor = db.cursor()
         sql = "INSERT INTO `register`(`name`, `surname`, `email`, `password`) VALUES (%s,%s,%s,%s)"
@@ -66,7 +69,8 @@ def password_confirm():
     form = RegisterForm()
     form.validate_on_submit()
     if request.method == 'POST':
-
+     if request.form["password"] != request.form["conf_pass"]:
+        flash("Your password and password verification didn't match.", "danger")
         password = request.form['password']
         conf_pass = request.form['conf_pass']
 
