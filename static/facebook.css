@@ -51,3 +51,9 @@ h1
 {
     background: blue;
 }
+.btn-primary a {
+    color: white;
+}
+.btn-primary a:hover {
+    color: white;
+}
