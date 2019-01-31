@@ -3,34 +3,50 @@
     margin-left: 34%;
     padding-right: 30%;
 }
+.card-header
+{
+     /*margin-left: 34%;*/
+    left: 90%;
+}
+.card
+{
+    left: 90%;
+}
 body
 {
-    background-color: blue;
+    background-image: url("../static/sunset.jpg");
 }
 .form-row
 {
-    left: 50%;
-    float: right;
+    left: 10%;
+    float: left;
 }
-h1
+h1,h5
 {
     font-weight: bold;
+    color: white;
 }
 .reset
 {
     font-weight: bold;
     text-decoration: underline;
-    left: 76%;
+    left: 63%;
    font-size: 14px;
     color: blue;
 }
 .reset_password
 {
     font-weight: bold;
-    text-decoration: underline;
+    text-decoration: none;
     left: 48%;
-   font-size: 14px;
+   font-size: 18px;
     color: blue;
+}
+.reset_password:hover
+{
+    text-decoration: underline;
+    font-weight: bolder;
+    font-size: 20px;
 }
 .content
 {
@@ -47,13 +63,75 @@ h1
 {
      margin-bottom: 1px !important;
 }
-.block
+/*.block*/
+/*{*/
+    /*background: blue;*/
+/*}*/
+.btn-primary
 {
-    background: blue;
+    margin-left: 7%;!important;
+  margin-top: 5%; !important;
+
+}
+.forgot p
+{
+
+   left: 46% !important;
 }
 .btn-primary a {
+    text-decoration: none;
+}
+/*.btn-primary a:hover {*/
+    /*color: white;*/
+/*}*/
+.form-group input[type=password],input[type=name],input[type=surname], input[type=email], input[type=submit] {
+    outline: rebeccapurple !important;
+    background: transparent !important;
+    border-color: rebeccapurple !important;
+}
+input[type=email] {
+    background-color: transparent;
+}
+.card
+{
+    background: transparent !important;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: pink !important;
+}
+.card-body input[type=email] {
+    background-color: transparent;
+}
+.form-group
+{
+    background-color: transparent;
+}
+.form-row
+{
+
+    background-color: transparent;
+}
+.form-row h4 {
     color: white;
 }
-.btn-primary a:hover {
+
+.form-groupr {
+    background-color: transparent;
+}
+.container
+{
+    background-color: transparent;
+}
+.text-color{
+    color: white;
+}
+.float-right {
+    margin-left: 19rem;
+}
+.float-left
+{
+    margin-right: 9rem;
+}
+.modify a {
     color: white;
 }
