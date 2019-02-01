@@ -26,34 +26,34 @@
         <div class="col-5">
             <div class="card">
                 <div class="card-header">
-                    <h2 align="center"> Login</h2>
+                    <h2 align="center" class="text-center"> Login</h2>
                 </div>
                 <div class="card-body">
 
 
                     <form method="post" action="/login">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                            <label for="exampleInputEmail1" class="text-center">Email address</label>
+                            <input type="email" name="email" title="Enter Your Email" style="color: white" class="form-control" id="exampleInputEmail1"
                                    aria-describedby="emailHelp" placeholder="Enter email">
                             {% for error in form.email.errors %}
                                 <span style="color: red;">[{{ error }}]</span>
                             {% endfor %}
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            <small id="emailHelp" class="form-text text-muted ">We'll never share your email with anyone
                                 else.
                             </small>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1"
-                                   placeholder="Password">
+                            <label for="exampleInputPassword1" class="text-center">Password</label>
+                            <input type="password" name="password" title="Enter your Password" style="color: white" class="form-control" id="exampleInputPassword1"
+                                   placeholder="Enter Password">
                             {% for error in form.password.errors %}
                                 <span style="color: red;">[{{ error }}]</span>
                             {% endfor %}
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" style="margin-top: 1rem">
+                            <label class="form-check-label" for="exampleCheck1" style="margin-top: 1rem">Check me out</label>
                         </div>
                         <button type="submit" class="btn btn-primary float-right" style="margin-right: 2rem">Log In
                         </button>
