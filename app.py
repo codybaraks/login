@@ -127,7 +127,7 @@ def reset():
         if email == '':
             print('email not entered')
             flash('Email not Entered, Enter email')
-            return redirect(url_for('reset'))
+            return redirect(url_for('form_reset'))
         else:
             print('thanks its entered')
             flash('Email captured')
@@ -156,6 +156,7 @@ def reset():
             # print("checking for real")
             return redirect(url_for('register', token=token))
         else:
+
                 msg = Message(subject='Password Reset', sender='earvinbaraka@gmail.com',
                               recipients=[request.form['email']])
                 msg.body = "This email does not exist in our system, " \

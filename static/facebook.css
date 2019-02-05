@@ -93,7 +93,7 @@ h1,h5,h4
 /*}*/
 .form-group input[type=password],input[type=name],input[type=surname], input[type=email], input[type=submit] {
     outline: rebeccapurple !important;
-    background: transparent !important;
+    background: rgba(0, 0, 0, 0.70) !important;
     border-color: pink !important;
 }
 input[type=email] {
