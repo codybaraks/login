@@ -16,7 +16,8 @@
  }
 body
 {
-    background-image: url("../static/nairobi.jpg");
+    background-image: url("../static/wall.jpg");
+    background-size: cover;
 }
 .form-row
 {
@@ -32,7 +33,7 @@ h1,h5,h4
 {
     font-weight: bold;
     text-decoration: underline;
-    left: 63%;
+    left: 53%;
     font-size: 14px;
     color: palevioletred; !important;
 }
@@ -40,15 +41,16 @@ h1,h5,h4
 {
     font-weight: bold;
     text-decoration: none;
-    left: 48%;
-   font-size: 18px;
-    color: blue;
+    justify-content: center !important;
+    font-size: 18px;
+    color: #afafaf;
 }
 .reset_password:hover
 {
     text-decoration: underline;
     font-weight: bolder;
     font-size: 20px;
+    color: palevioletred;
 }
 .content
 {
@@ -73,12 +75,15 @@ h1,h5,h4
 .btn-primary
 {
   background-color: darkmagenta !important;
+  border-color: palevioletred !important;
+  outline: palevioletred !important;
 
 }
 .forgot p
 {
 
-   left: 46% !important;
+   justify-content: center !important;
+    color: #afafaf!important;
 }
 .btn-primary a {
     text-decoration: none;
@@ -97,8 +102,8 @@ input[type=email] {
 .card
 {
      /*midnightblue*/
-    background: transparent !important;
-    opacity: 0.9 !important;
+    background-color: rgba(0, 0, 0, 0.70) !important;
+    opacity: 0.7 !important;
      filter: alpha(opacity=20)!important;
     	/*z-index: -1;*/
 }

@@ -23,8 +23,8 @@
         <div class="col-12">
 
         </div>
-        <div class="col-5">
-            <div class="card">
+        <div class="col-7">
+            <div class="card col-md-10">
                 <div class="card-header">
                     <h2 align="center" class="text-center"> Login</h2>
                 </div>
@@ -34,7 +34,8 @@
                     <form method="post" action="/login">
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="text-center">Email address</label>
-                            <input type="email" name="email" title="Enter Your Email" style="color: white" class="form-control" id="exampleInputEmail1"
+                            <input type="email" name="email" title="Enter Your Email" style="color: white"
+                                   class="form-control" id="exampleInputEmail1"
                                    aria-describedby="emailHelp" placeholder="Enter email">
                             {% for error in form.email.errors %}
                                 <span style="color: red;">[{{ error }}]</span>
@@ -45,7 +46,8 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1" class="text-center">Password</label>
-                            <input type="password" name="password" title="Enter your Password" style="color: white" class="form-control" id="exampleInputPassword1"
+                            <input type="password" name="password" title="Enter your Password" style="color: white"
+                                   class="form-control" id="exampleInputPassword1"
                                    placeholder="Enter Password">
                             {% for error in form.password.errors %}
                                 <span style="color: red;">[{{ error }}]</span>
@@ -53,13 +55,16 @@
                         </div>
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1" style="margin-top: 1rem">
-                            <label class="form-check-label" for="exampleCheck1" style="margin-top: 1rem">Check me out</label>
+                            <label class="form-check-label" for="exampleCheck1" style="margin-top: 1rem">Check me
+                                out</label>
                         </div>
                         <button type="submit" class="btn btn-primary float-right" style="margin-right: 2rem">Log In
                         </button>
-                    <div class="forgot float-left">
-                                            <a href="form_reset"><p>Forgot Password</p></a>
+                        <div class="forgot float-left justify-content-center" style="margin-left: 7rem">
+                            <a href="form_reset"><p>Forgot Password</p></a>
+                        </div>
                     </form>
+
                 </div>
             </div>
         </div>

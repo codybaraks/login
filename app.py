@@ -42,6 +42,11 @@ def form_reset():
     form.validate_on_submit()
     if request.method == 'POST':
         email = request.form["email"]
+        # if email == None:
+        #     flash("check your Email!")
+        # else:
+        #     print('mail not entered')
+        #     flash('Enter Your Email')
         print(email)
     return render_template('reset.html', form=form)
 
@@ -119,6 +124,13 @@ def reset():
     form.validate_on_submit()
     if request.method == 'POST':
         email = request.form['email']
+        if email == '':
+            print('email not entered')
+            flash('Email not Entered, Enter email')
+            return redirect(url_for('reset'))
+        else:
+            print('thanks its entered')
+            flash('Email captured')
         print(email)
         cursor = db.cursor(buffered=True)
         sql = "SELECT * FROM register WHERE email=%s"
@@ -144,7 +156,14 @@ def reset():
             # print("checking for real")
             return redirect(url_for('register', token=token))
         else:
-            flash('wrong username or password!')
+                msg = Message(subject='Password Reset', sender='earvinbaraka@gmail.com',
+                              recipients=[request.form['email']])
+                msg.body = "This email does not exist in our system, " \
+                           "if you not the one who entered this mail ignore this message"
+                mail.send(msg)
+                flash('Email does not exist or wrong username or password!')
+                return redirect(url_for('register'))
+
     return render_template('home.html', form=form)
 
 
