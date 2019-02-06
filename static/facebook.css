@@ -9,7 +9,7 @@
 /*}*/
 .card
 {
-    left: 90%;
+    left: 94%;
 }.card-body
  {
     right:8%!important;
@@ -22,7 +22,17 @@ body
 .form-row
 {
     left: 10%;
+    float: right;
+}
+.control
+{
+    /*width: 100% !important;*/
+  /*max-height: 200px !important;*/
+  /*max-width: 200px !important;*/
+    /*max-width: 150px!important;*/
+    left: 2%;
     float: left;
+
 }
 h1,h5,h4
 {
@@ -92,9 +102,9 @@ h1,h5,h4
     /*color: white;*/
 /*}*/
 .form-group input[type=password],input[type=name],input[type=surname], input[type=email], input[type=submit] {
-    outline: rebeccapurple !important;
+    outline: none !important; /*rebeccapurple*/
     background: rgba(0, 0, 0, 0.70) !important;
-    border-color: pink !important;
+    border-color: transparent !important; /*pink*/
 }
 input[type=email] {
     background-color: transparent;
@@ -164,3 +174,19 @@ input[type=email] {
 {
     color: white!important;
 }
+
+.carousel-inner img {
+  width:100%!important;
+    height: 100% !important;
+  max-height: 1000px !important;
+  /*max-width: 200px !important;*/
+    margin-bottom: 0px;
+    display: block;
+
+}
+
+/*.carousel-caption {*/
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*transform: translateY(-50%);*/
+/*}*/

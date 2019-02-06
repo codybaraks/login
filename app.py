@@ -125,8 +125,8 @@ def reset():
     if request.method == 'POST':
         email = request.form['email']
         if email == '':
-            print('email not entered')
-            flash('Email not Entered, Enter email')
+            print('email not entered', 'danger')
+            flash('Email not Entered, Enter email', 'danger')
             return redirect(url_for('form_reset'))
         else:
             print('thanks its entered')
@@ -162,7 +162,7 @@ def reset():
                 msg.body = "This email does not exist in our system, " \
                            "if you not the one who entered this mail ignore this message"
                 mail.send(msg)
-                flash('Email does not exist or wrong username or password!')
+                flash('Email does not exist or wrong username or password!', 'danger')
                 return redirect(url_for('register'))
 
     return render_template('home.html', form=form)

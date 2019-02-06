@@ -6,10 +6,84 @@
     <link rel="stylesheet" href="../static/facebook.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
 </head>
 
 <body>
+{#<div class="row control col-md-2">#}
+{#  <div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators" >#}
+{#    <ol class="carousel-indicators">#}
+{#        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>#}
+{#        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>#}
+{#        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>#}
+{#    </ol>#}
+{#    <div class="carousel-inner">#}
+{#        <div class="carousel-item active">#}
+{#            <img src="../static/slide1.jpg" alt="First slide">#}
+{#        </div>#}
+{#        <div class="carousel-item">#}
+{#            <img  src="../static/slide2.jpg" alt="Second slide">#}
+{#        </div>#}
+{#        <div class="carousel-item">#}
+{#            <img src="../static/slide3.jpg" alt="Third slide">#}
+{#        </div>#}
+{#    </div>#}
+{#    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">#}
+{#        <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
+{#        <span class="sr-only">Previous</span>#}
+{#    </a>#}
+{#    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">#}
+{#        <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
+{#        <span class="sr-only">Next</span>#}
+{#    </a>#}
+{#</div>#}
+{#</div>#}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
 <div class="blue col-xs-12">
 
 </div>
@@ -31,16 +105,17 @@
         <div class="container-fluid" style="margin-top: 2rem">
 
             <div class="row justify-content-left">
-                <div class="col-8">
+                <div class="col-md-8">
 
 
                     <div class="card  justify-content-center col-md-9">
 
                         <div class="card-header">
-                             <h4 class="content col-md-12">This Site helps you connect and share with the people in
-                                your
-                                life.</h4>
-                            <h1 class="text-center justify-content-center" style="margin-right: 3rem">Create an Account</h1>
+{#                            <h4 class="content col-md-12">This Site helps you connect and share with the people in#}
+{#                                your#}
+{#                                life.</h4>#}
+                            <h1 class="text-center justify-content-center" style="margin-right: 3rem">Create an
+                                Account</h1>
                             <h5 class="text-center justify-content-center">its Free and always will be</h5>
 
                         </div>
@@ -51,17 +126,19 @@
                                 <div class="form-row col-md-12">
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1"></label>
-                                        <input type="name" name="name" style="color: white" class="form-control" id="exampleInputEmail1"
+                                        <input type="name" name="name" style="color: white" class="form-control"
+                                               id="exampleInputEmail1"
                                                aria-describedby="emailHelp"
                                                placeholder="First Name">
                                         {% for error in form.email.errors %}
+
                                             <span style="color: red;">[{{ error }}]</span>
                                         {% endfor %}
 
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="exampleInputPassword1"></label>
-                                        <input type="name" name="surname" class="form-control"
+                                        <input type="name" name="surname" style="color: white" class="form-control"
                                                id="exampleInputPassword1"
                                                placeholder="surname">
                                         {% for error in form.surname.errors %}
@@ -70,7 +147,7 @@
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="exampleInputPassword1"></label>
-                                        <input type="email" name="email" class="form-control"
+                                        <input type="email" name="email" style="color: white" class="form-control"
                                                id="exampleInputPassword2"
                                                placeholder="Mobile Number or Email address">
                                         {% for error in form.email.errors %}
@@ -79,7 +156,7 @@
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="exampleInputPassword1"></label>
-                                        <input type="password" name="password" class="form-control"
+                                        <input type="password" name="password" style="color: white" class="form-control"
                                                id="exampleInputPassword3"
                                                placeholder="New Password">
                                         {% for error in form.password.errors %}
@@ -90,16 +167,17 @@
                                     <button type="submit" class="btn btn-primary btn-md float-right"
                                             style="margin-left: 21em;margin-top: 1rem">Register
                                     </button>
-                                    <a href="login" class=" col-md-5 justify-content-center" style="color: #afafaf; margin-left: 7rem">I have an account Login.</a>
+                                    <a href="login" class=" col-md-5 justify-content-center"
+                                       style="color: #afafaf; margin-left: 7rem">I have an account Login.</a>
                                 </div>
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 {#<a href="login" class="reset col-md-5" style="margin-right: 10rem">I have an account Login.</a>#}
 </body>
