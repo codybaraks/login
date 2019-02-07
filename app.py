@@ -26,6 +26,11 @@ def hello_world():
     return redirect(url_for('register'))
 
 
+@app.route('/site_main')
+def sitemain():
+    return render_template('Main_Site.html')
+
+
 @app.route('/pass_form')
 def pass_form():
     return redirect(url_for('password_confirm'))
@@ -74,8 +79,7 @@ def register():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     form = RegisterForm()
-    form.validate_on_submit()
-    if request.method == 'POST':
+    if form.validate_on_submit():
         email = request.form['email']
         password = (request.form['password'])
 
@@ -88,11 +92,11 @@ def login():
         if register:
             session['email'] = register[2]
             session['password'] = register[3]
-            return redirect(url_for('home'))
+            return redirect(url_for('sitemain'))
         else:
             flash('Wrong username or password!')
 
-    return render_template('login.html', form=form)
+    return render_template('login.html', form=RegisterForm)
 
 
 @app.route('/password_confirm', methods=['GET', 'POST'])
