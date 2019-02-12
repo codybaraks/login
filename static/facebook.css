@@ -206,18 +206,32 @@ input[type=email] {
     color: white!important;
 }
 
-.carousel-inner img {
-  width:100%!important;
-    height: 100% !important;
-  max-height: 1000px !important;
-  /*max-width: 200px !important;*/
-    margin-bottom: 0px;
-    display: block;
+/*.carousel-inner img {*/
+  /*width:100%!important;*/
+    /*height: 100% !important;*/
+  /*max-height: 1000px !important;*/
+  /*!*max-width: 200px !important;*!*/
+    /*margin-bottom: 0px;*/
+    /*display: block;*/
 
-}
+/*}*/
 
 /*.carousel-caption {*/
     /*position: absolute;*/
     /*top: 50%;*/
     /*transform: translateY(-50%);*/
 /*}*/
+.carousel .item {
+    width: 100%; /*slider width*/
+    max-height: 600px; /*slider height*/
+}
+.carousel .item img {
+    width: 100%; /*img width*/
+}
+/*full width container*/
+@media (max-width: 767px) {
+    .block {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+}

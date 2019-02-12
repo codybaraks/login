@@ -131,6 +131,15 @@ def login():
     return render_template('login.html', form=form)
 
 
+@app.route('/logout')
+def logout():
+    if session.get('names') == None:
+        return redirect(url_for('login'))
+    session.pop('names')
+    session.pop('password')
+    return redirect(url_for('login'))
+
+
 @app.route('/password_confirm', methods=['GET', 'POST'])
 def password_confirm():
     # if request.form["password"] != request.form["conf_pass"]:
