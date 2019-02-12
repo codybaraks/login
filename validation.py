@@ -15,4 +15,8 @@ class ResetForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email(message="Invalid Email")])
 
 
+class UserLoginForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(),Email(message="Invalid Emaill")])
+    password = PasswordField('Password', validators=[DataRequired(message="You must provide a password"), Length(min=3,  message="Password Too short")])
+
 

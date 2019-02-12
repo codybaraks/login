@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="../static/facebook.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{% extends 'Base.html' %}
 
-</head>
-<body>
+{% block content %}
+
 <div class="container" style="margin-top: 3rem">
     {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -32,6 +25,7 @@
 
 
                     <form method="post" action="/login">
+                    {{ form.csrf_token }}
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="text-center">Email address</label>
                             <input type="email" name="email" title="Enter Your Email" style="color: white"
@@ -74,5 +68,4 @@
 
 
 {#<a href="register" class="reset_password col-md-5" style="margin-right: 10rem">Register</a>#}
-</body>
-</html>
+{% endblock %}

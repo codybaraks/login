@@ -26,8 +26,10 @@ def hello_world():
     return redirect(url_for('register'))
 
 
-@app.route('/site_main')
-def sitemain():
+@app.route('/slider')
+def slider():
+    if session.get('names') == None:
+        return redirect(url_for('login'))
     return render_template('Main_Site.html')
 
 
@@ -58,13 +60,16 @@ def form_reset():
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
+    if session.get('names') == None:
+        return redirect(url_for('login'))
     form = RegisterForm()
     form.validate_on_submit()
     if request.method == 'POST':
         name = request.form['name']
         surname = request.form['surname']
         email = request.form['email']
-        password = sha256_crypt.encrypt(request.form['password'])
+        password = request.form['password']
+        # sha256_crypt.encrypt
         # password.hexdigest
         # password = hashlib.md5(password.encode())
         print(name, surname, email, password)
@@ -76,27 +81,54 @@ def register():
     return render_template('home.html', form=form)
 
 
-@app.route('/login', methods=['POST', 'GET'])
+# @app.route('/login', methods=['GET', 'POST'])
+# def login():
+#     loginform = UserLoginForm()
+#     if request.method == 'GET':
+#         return render_template('login.html', form=loginform)
+#     if loginform.validate_on_submit():
+#         if request.method == 'POST':
+#             email = request.form['email']
+#             password = request.form['password']
+#             print(email, password)
+#             cursor = db.cursor()
+#             sql = "SELECT * FROM register WHERE email=%s AND password=%s"
+#             val = (email, password)
+#             cursor.execute(sql, val)
+#             user = cursor.fetchone()
+#             if user:
+#                 session['names'] = user[0]
+#                 session['password'] = user[3]
+#                 return redirect(url_for('home'))
+#             else:
+#                 flash('Wrong username or password!')
+#     return render_template('login.html', form=loginform)
+
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = RegisterForm()
+    form = UserLoginForm()
+    if request.method == 'GET':
+        return render_template('login.html', form=form)
     if form.validate_on_submit():
-        email = request.form['email']
-        password = (request.form['password'])
-
-        print(email, password)
-        cursor = db.cursor(buffered=True)
-        sql = "SELECT * FROM register WHERE email=%s AND password=%s"
-        val = (email, password)
-        cursor.execute(sql, val)
-        register = cursor.fetchone()
-        if register:
-            session['email'] = register[2]
-            session['password'] = register[3]
-            return redirect(url_for('sitemain'))
-        else:
-            flash('Wrong username or password!')
-
-    return render_template('login.html', form=RegisterForm)
+        if request.method == "POST":
+            email = request.form['email']
+            password = request.form['password']
+            cursor = db.cursor()
+            print(email, password)
+            print('Entered')
+            sql = "SELECT * FROM register WHERE email=%s AND password=%s"
+            vals = (email, password)
+            cursor.execute(sql, vals)
+            register = cursor.fetchone()
+            if register:
+                session['names'] = register[2]
+                session['password'] = register[3]
+                print('Entered')
+                return redirect(url_for('slider'))
+            else:
+                flash('wrong username or password!')
+    return render_template('login.html', form=form)
 
 
 @app.route('/password_confirm', methods=['GET', 'POST'])
@@ -113,7 +145,7 @@ def password_confirm():
             conf_pass = request.form['conf_pass']
 
             print(password, conf_pass)
-            cursor = db.cursor()
+            cursor = db.cursor(buffered=True)
             sql = "UPDATE `register` SET `password`=%s WHERE email='earvinbaraka@gmail.com'"
             val = (password,)
             cursor.execute(sql, val)
@@ -161,13 +193,13 @@ def reset():
             return redirect(url_for('register', token=token))
         else:
 
-                msg = Message(subject='Password Reset', sender='earvinbaraka@gmail.com',
-                              recipients=[request.form['email']])
-                msg.body = "This email does not exist in our system, " \
-                           "if you not the one who entered this mail ignore this message"
-                mail.send(msg)
-                flash('Email does not exist or wrong username or password!', 'danger')
-                return redirect(url_for('register'))
+            msg = Message(subject='Password Reset', sender='earvinbaraka@gmail.com',
+                          recipients=[request.form['email']])
+            msg.body = "This email does not exist in our system, " \
+                       "if you not the one who entered this mail ignore this message"
+            mail.send(msg)
+            flash('Email does not exist or wrong username or password!', 'danger')
+            return redirect(url_for('register'))
 
     return render_template('home.html', form=form)
 
