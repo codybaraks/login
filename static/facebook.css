@@ -235,3 +235,10 @@ input[type=email] {
         margin-right: -20px;
     }
 }
+.table td, thead
+{
+    color: white!important;
+}
+table td {
+    color: darkmagenta!important;
+}

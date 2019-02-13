@@ -1,0 +1,46 @@
+{% extends 'Main_Site.html' %}
+
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+
+
+{% block content %}
+    <br>
+    <br>
+
+    <div class="container">
+        <table class="table" id="example">
+        <thead>
+         <tr>
+{#                <th>ID</th>#}
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>DELETE User</th>
+{#                <th>Role</th>#}
+            </tr>
+        </thead>
+           <tbody>
+             {% for register in register %}
+                <tr>
+{#                    <td>{{ register[0] }}</td>#}
+                    <td>{{ register[1] }}</td>
+                    <td>{{ register[2] }}</td>
+                    <td>{{ register[3] }}</td>
+                    <td><a href="/del/{{ register[0] }}" class="btn btn-danger btn-sm">Delete</a></td>
+                </tr>
+            {% endfor %}
+           </tbody>
+
+        </table>
+    </div>
+
+  <script>
+    $(document).ready( function () {
+    $('#example').DataTable();
+} );
+    </script>
+
+{% endblock %}
