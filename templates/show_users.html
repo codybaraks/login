@@ -11,6 +11,15 @@
     <br>
 
     <div class="container">
+       {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                    {% for message in messages %}
+                        <p class="text-info text-center">{{ message }}</p>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
         <table class="table" id="example">
         <thead>
          <tr>

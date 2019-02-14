@@ -28,8 +28,8 @@ def hello_world():
 
 @app.route('/slider')
 def slider():
-    # if session.get('names') == None:
-    #     return redirect(url_for('login'))
+    if session.get('names') == None:
+        return redirect(url_for('login'))
     return render_template('Main_Site.html')
 
 
@@ -60,8 +60,12 @@ def form_reset():
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
-    # if session.get('names') == None:
-    #     return redirect(url_for('login'))
+    if session.get('names') == None:
+        return redirect(url_for('login'))
+
+    if session.get('role') == "Normal":
+        return redirect(url_for('slider'))
+
     form = RegisterForm()
     form.validate_on_submit()
     if request.method == 'POST':
@@ -69,13 +73,14 @@ def register():
         surname = request.form['surname']
         email = request.form['email']
         password = request.form['password']
+        role = request.form['role']
         # sha256_crypt.encrypt
         # password.hexdigest
         # password = hashlib.md5(password.encode())
-        print(name, surname, email, password)
+        print(name, surname, email, password, role)
         cursor = db.cursor()
-        sql = "INSERT INTO `register`(`name`, `surname`, `email`, `password`) VALUES (%s,%s,%s,%s)"
-        val = (name, surname, email, password)
+        sql = "INSERT INTO `register`(`name`, `surname`, `email`, `password`, `role`) VALUES (%s,%s,%s,%s,%s)"
+        val = (name, surname, email, password, role)
         cursor.execute(sql, val)
         db.commit()
     return render_template('home.html', form=form)
@@ -98,17 +103,30 @@ def login():
             register = cursor.fetchone()
             if register:
                 session['names'] = register[2]
-                session['password'] = register[3]
+                session['role'] = register[5]
                 return redirect(url_for('slider'))
             else:
                 flash('wrong username or password!')
     return render_template('login.html', form=form)
 
 
+@app.route('/logout')
+def logout():
+    if session.get('names') == None:
+        return redirect(url_for('login'))
+    session.pop('names')
+    session.pop('role')
+    return redirect(url_for('login'))
+
+
 @app.route('/show_users')
 def show_users():
-    # if session.get('names') == None:
-    #     return redirect(url_for('login'))
+    if session.get('names') == None:
+        return redirect(url_for('login'))
+
+    if session.get('role') == "Normal":
+        return redirect(url_for('slider'))
+
     cursor = db.cursor()
     sql = "SELECT * FROM register"
     cursor.execute(sql)
@@ -118,33 +136,25 @@ def show_users():
 
 @app.route('/del/<id>')
 def del_ref(id):
-    # if session.get('names') == None:
-    #     return redirect(url_for('login'))
+    if session.get('names') == None:
+        return redirect(url_for('login'))
     cursor = db.cursor()
     sql = "DELETE FROM register WHERE id=%s"
     cursor.execute(sql, (id,))
     db.commit()
-    flash('Borrower Successfully Removed ')
+    flash('User Successfully Removed ')
     return redirect(url_for('remove'))
 
 
 @app.route('/delete')
 def remove():
-    # if session.get('names') == None:
-    #     return redirect(url_for('login'))
+    if session.get('names') == None:
+        return redirect(url_for('login'))
     cursor = db.cursor()
     sql = "SELECT * FROM register"
     cursor.execute(sql)
     register = cursor.fetchall()
     return render_template('show_users.html', register=register)
-
-@app.route('/logout')
-def logout():
-    # if session.get('names') == None:
-    #     return redirect(url_for('login'))
-    session.pop('names')
-    session.pop('password')
-    return redirect(url_for('login'))
 
 
 @app.route('/password_confirm', methods=['GET', 'POST'])
