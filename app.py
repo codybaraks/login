@@ -13,8 +13,8 @@ db = connector.connect(host="localhost", user="root", passwd="root", database="p
 app = Flask(__name__)
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'earvinbaraka@gmail.com'
-app.config['MAIL_PASSWORD'] = 'Commandprompt.1'
+app.config['MAIL_USERNAME'] = 'Confidential'
+app.config['MAIL_PASSWORD'] = 'Confidential'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
